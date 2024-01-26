@@ -7,7 +7,9 @@ const MyStories: React.FC = () => {
       <Header />
 
       <div className="flex min-h-screen justify-center items-center">
-        <h1>Coming Soon...</h1>
+        <h1>Coming Soon... a</h1>
+
+
       </div>
     </div>
   );

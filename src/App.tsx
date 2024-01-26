@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Dashboard } from "./pages";
 import PostStories from "./pages/poststories/PostStories";
-import MyStories from "./pages/mystories/MyStories";
+import MyStories from "./pages/newend/NewEnd";
 
 function App() {
   return (
