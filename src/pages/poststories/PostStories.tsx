@@ -3,7 +3,8 @@ import Header from "../../components/NavBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy } from "@fortawesome/free-solid-svg-icons/faCopy";
 import UploadStory from "../../services/Story3_Service";
-import { GenerateStory, uploadGeneratedStory } from "../../services/ChatGPT";
+import { GenerateStory } from "../../services/ChatGPT";
+import { Fade } from "@mui/material";
 
 const PostStories: React.FC = () => {
   let [newStory, setNewStory] = useState<string>("");
@@ -42,6 +43,9 @@ const PostStories: React.FC = () => {
   return (
     <div>
       <Header />
+
+      <Fade in={true} timeout={1000}>
+
       <div className="flex flex-col justify-center items-center gap-6 pl-24 pr-24 mt-12 max-h-screen">
         <h3 className="w-1/2"> Enter the Information for the story</h3>
         <div className="w-full flex flex-col justify-center items-center gap-4">
@@ -90,15 +94,7 @@ const PostStories: React.FC = () => {
           </div>
 
           <div className="flex justify-center items-center w-1/2  gap-12">
-            {/* <button
-              className="flex bg-custom-background p-4 rounded text-custom-white self-end"
-              disabled={isLoading && true}
-              onClick={() => {
-                automateStories();
-              }}
-            >
-              Automate Stories
-            </button> */}
+
 
             <button
               className="flex bg-custom-background p-4 rounded text-custom-white self-end"
@@ -162,6 +158,7 @@ const PostStories: React.FC = () => {
           </button>
         </div>
       </div>
+      </Fade>
     </div>
   );
 };

@@ -16,13 +16,15 @@ const Dashboard: React.FC = () => {
         NET({
           el: vantaRef.current,
           THREE: THREE,
-          scale: 0.5,
-          scaleMobile: 1.0,
           color1: 0x2b889a,
           backgroundColor: 0x25356b,
-          points: 10.0,
-          maxDistance: 30.0,
-          spacing: 20.0,
+          mouseControls: true,
+          touchControls: true,
+          gyroControls: false,
+          minHeight: 200.00,
+          minWidth: 200.00,
+          scale: 1.00,
+          scaleMobile: 1.00
         })
       );
     }
@@ -44,35 +46,39 @@ const Dashboard: React.FC = () => {
       >
         <Fade in={true} timeout={1000}>
           <div>
-          <div className="bg-primary bg-opacity-80  text-custom-white p-4 mb-2 rounded">
-          <h1>Welcome to NewEnd</h1>
-          <p className="mt-4">
-            Next Gen story generator with generative AI powered by GPT-3.5 to
-            explore new short stories and exciting new endings for existing
-            stories
-          </p>
-        </div>
+            <div className="bg-secondary bg-opacity-90  text-custom-white p-4 mb-2 rounded">
+              <h1 className="text-custom-black w-fit border-b-[1px] mb-6">Welcome to NewEnd</h1>
+              <p className="mt-4 text-xl text-custom-black">
+                Experience storytelling like never before with NewEnd GenMode.
+                Generate personalized stories using our app powered by OpenAI,
+                explore twists on Story3, and track story analytics through the
+                Story3 API. With extreme flexibility, users can shape narratives
+                with countless levels and twists for endless creative
+                possibilities.
+              </p>
+            </div>
 
-        <div className="two-cards flex justify-around items-center p-4 mt-12">
-          <div
-            className="h-96 w-1/2 flex justify-center items-center bg-secondary cursor-pointer rounded-xl m-4 hover:bg-primary transition"
-            onClick={() => navigate("poststory")}
-          >
-            <h1 className="text-custom-black">
-              Generate and Post Short Stories
-            </h1>
-          </div>
-          <div
-            className="h-96 w-1/2 flex justify-center items-center bg-secondary cursor-pointer rounded-xl m-4 hover:bg-primary transition"
-            onClick={() => navigate("mystory")}
-          >
-            <h1 className="text-custom-black">New Endings</h1>
-          </div>
-        </div>
-          </div>
+            <div className="two-cards flex justify-around items-center p-4 mt-12">
+              <div
+                className="h-96 w-1/2 flex flex-col justify-center items-center bg-secondary cursor-pointer rounded-xl m-4 hover:bg-primary transition"
+                onClick={() => navigate("poststory")}
+              >
+                <h1 className="text-custom-black">
+                  Generate and Post Short Stories
+                </h1>
+                <p className="text-custom-black">Generate simple short stories of your liking for fun</p>
 
+              </div>
+              <div
+                className="h-96 w-1/2 flex flex-col justify-center items-center bg-secondary cursor-pointer rounded-xl m-4 hover:bg-primary transition"
+                onClick={() => navigate("mystory")}
+              >
+                <h1 className="text-custom-black">New End - GenMode</h1>
+                <p className="text-custom-black">Generate more flexible stories with additional context and number of endings</p>
+              </div>
+            </div>
+          </div>
         </Fade>
-
       </div>
     </div>
   );

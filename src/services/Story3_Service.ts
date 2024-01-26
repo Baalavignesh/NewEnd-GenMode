@@ -133,50 +133,6 @@ interface Story {
   const twistsUrl = "https://story3.com/api/v2/twists";
   const authToken = import.meta.env.VITE_STORY3_APIKEYS;
   let uploadStory = async (json_text: string): Promise<any> => {
-    // Your JSON data here
-    json_text = `{
-        "title": "Chronicles of the Galactic Ronin",
-        "genre": "Space Opera,Adventure,Fantasy",
-        "story": {
-          "start": {
-            "story_segment": "In the vast expanse of the cosmos, you find yourself aboard the starship 'Wanderer's Blade,' a legendary vessel seeking a masterless warrior known as the Galactic Ronin. Your journey begins as you stand on the ship's bridge, surrounded by blinking control panels and holographic star maps.",
-            "branch_1": "Embark on a quest to the outer rim, following rumors of the Galactic Ronin's last sighting.",
-            "branch_2": "Investigate a distress signal from a nearby asteroid belt, suspecting it might be related to the Galactic Ronin."
-          },
-          "branch_1": {
-            "story_segment": "As you venture into the outer rim, the ship's sensors detect anomalies in the fabric of space. A mysterious portal appears, tempting you with the promise of uncovering the Galactic Ronin's secrets. Do you dare to enter?",
-            "branch_3": "Enter the portal, risking the unknown.",
-            "branch_4": "Continue your journey without entering the portal, staying focused on finding the Galactic Ronin."
-          },
-          "branch_2": {
-            "story_segment": "Upon reaching the asteroid belt, you discover a hidden base where an intergalactic smuggling ring operates. They possess information about the Galactic Ronin's whereabouts. Do you negotiate with them or confront them head-on?",
-            "branch_5": "Negotiate with the smugglers to gain information.",
-            "branch_6": "Confront the smugglers and retrieve the information forcefully."
-          },
-          "branch_3": {
-            "story_segment": "The portal transports you to a dimension where time flows differently. You encounter ancient beings who offer to share their knowledge in exchange for a service. Do you accept their offer or attempt to return through the portal?",
-            "branch_7": "Accept the beings' offer and gain their knowledge.",
-            "branch_8": "Attempt to return through the portal, uncertain of the consequences."
-          },
-          "branch_4": {
-            "story_segment": "Continuing your journey, you stumble upon a hidden planet where the Galactic Ronin is said to have retired. However, a powerful guardian challenges you before allowing entry. Do you face the guardian in combat or try to outsmart it?",
-            "branch_9": "Engage in combat with the guardian to prove your worth.",
-            "branch_10": "Use your wit and cunning to outsmart the guardian and gain access to the planet."
-          },
-          "branch_5": {
-            "story_segment": "Negotiating with the smugglers proves challenging, but after tense discussions, they agree to provide information. However, they demand a favor in return. Do you agree to their terms or attempt to find another way to obtain the information?",
-            "branch_11": "Agree to the smugglers' terms and fulfill the favor.",
-            "branch_12": "Refuse the smugglers' demands and search for an alternative solution."
-          },
-          "branch_6": {
-            "story_segment": "Confronting the smugglers leads to a fierce space battle. After defeating them, you recover the information about the Galactic Ronin's last known location. However, the battle has attracted the attention of a powerful space faction. Do you flee or stand your ground?",
-            "branch_13": "Flee from the approaching space faction to avoid conflict.",
-            "branch_14": "Stand your ground and prepare for a showdown with the approaching space faction."
-          }
-        }
-      }
-      `
-
       return uploadToStory3(authToken, json_text)
   };
   

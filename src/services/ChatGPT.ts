@@ -4,7 +4,6 @@ import { ChatCompletion } from "openai/resources/index.mjs";
 import uploadStory from "./Story3_Service";
 
 let openAIKey = import.meta.env.VITE_GPT_3_APIKEY;
-console.log(openAIKey)
 const openai = new OpenAI({
   apiKey: openAIKey,
   dangerouslyAllowBrowser: true,
@@ -14,6 +13,15 @@ interface IStoryInfo {
   Genre: string;
   Theme: string;
   Title: string;
+}
+
+interface IGenModeStoryInfo {
+  Genre: string;
+  Theme: string;
+  Title: string;
+  AdditionalInfo: string;
+  Twists: number;
+  Endings: number;
 }
 
 let getCommandInput = (storyInfo: IStoryInfo): string => {
@@ -64,12 +72,30 @@ let getCommandInput = (storyInfo: IStoryInfo): string => {
   return commandInput;
 };
 
+let getGenModeCommandInput = (
+  storyInfo: IGenModeStoryInfo,
+  template: string
+): string => {
+  let commandInput = `Generate a choose your own adventure type story in the follow format for the given genre:
+  IMPORTANT : branches must be limited to 40 characters
+  
+  Format as JSON
+  
+  ${template}
+  
+  Genre: ${storyInfo.Genre}
+  Theme:  ${storyInfo.Theme}
+  Title:  ${storyInfo.Title}
+  AdditionalInfo: ${storyInfo.AdditionalInfo}`;
+
+  return commandInput;
+};
+
 const GenerateStory = async (
   storyInfo: IStoryInfo
 ): Promise<ChatCompletion> => {
   console.log("generating story");
 
-  
   let finalCommand = getCommandInput(storyInfo);
   return openai.chat.completions.create({
     messages: [
@@ -82,16 +108,27 @@ const GenerateStory = async (
   });
 };
 
+const GenerateGenModeStory = async (
+  storyInfo: IGenModeStoryInfo,
+  template: string
+): Promise<ChatCompletion> => {
+  console.log("generating story");
 
-const uploadGeneratedStory = (story: IStoryInfo) => {
-  
-}
+  let finalCommand = getGenModeCommandInput(storyInfo, template);
+  return openai.chat.completions.create({
+    messages: [
+      {
+        role: "user",
+        content: finalCommand,
+      },
+    ],
+    model: "gpt-3.5-turbo",
+  });
+};
 
 const automateStories = async (): Promise<any> => {
   let missedOne = [];
   for (const singleStory of storyTheme.stories) {
-
-
     let response = await GenerateStory(singleStory);
     console.log(response);
     if (!response.choices[0].message.content) return;
@@ -107,6 +144,4 @@ const automateStories = async (): Promise<any> => {
   }
 };
 
-
-
-export { GenerateStory, automateStories, uploadGeneratedStory };
+export { GenerateStory, automateStories, GenerateGenModeStory };

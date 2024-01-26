@@ -1,37 +1,7 @@
-let template:any = {
+let final_template:any = {
   title: "[Title Here]",
   genre: "[Genre Here]",
   story: {
-    branch_1: {
-      story_segment: "[story segment here]",
-      branch_3: "[option 3]",
-      branch_4: "[option 4]",
-    },
-    branch_2: {
-      story_segment: "[story segment here]",
-      branch_5: "[option 5]",
-      branch_6: "[option 6]",
-    },
-    branch_3: {
-      story_segment: "[story segment here]",
-      end_1: "[unique ending 1]",
-      end_2: "[unique ending 2]",
-    },
-    branch_4: {
-      story_segment: "[story segment here]",
-      end_3: "[unique ending 3]",
-      end_4: "[unique ending 4]",
-    },
-    branch_5: {
-      story_segment: "[story segment here]",
-      end_5: "[unique ending 5]",
-      end_6: "[unique ending 6]",
-    },
-    branch_6: {
-      story_segment: "[story segment here]",
-      end_7: "[unique ending 7]",
-      end_8: "[unique ending 8]",
-    },
   },
 };
 
@@ -83,7 +53,7 @@ class BST {
         let new_branch_2 = `branch_${this.branch_number}`
         this.my_stack.push(new_branch_2);
         this.my_stack.push(new_branch_1);
-        template.story.start = {
+        final_template.story.start = {
             story_segment: "[story segment here]",
             [new_branch_1]: "[option 1]",
             [new_branch_2]: "[option 2]",
@@ -103,7 +73,7 @@ class BST {
         let new_branch_1 = `branch_${this.branch_number}`
         this.branch_number = this.branch_number + 1
         let new_branch_2 = `branch_${this.branch_number}`
-        template.story = {
+        final_template.story = {
             story_segment: "[story segment here]",
             [new_branch_1]: "[option 1]",
             [new_branch_2]: "[option 2]",
@@ -115,7 +85,6 @@ class BST {
   }
 }
 
-// Function to create a balanced BST with a given number of nodes
 function createBalancedBST(start: number, end: number): TreeNode | null {
   if (start > end) {
     return null;
@@ -129,16 +98,23 @@ function createBalancedBST(start: number, end: number): TreeNode | null {
   return root;
 }
 
-// Example: Create a balanced BST with 8 nodes
-function CreateTree() {
-  const nodeCount = 14;
+function CreateTree(twist:number) {
+  let nodeCount:number;
+  if(twist) {
+    nodeCount = Math.pow(2, twist+1) - 1
+  } 
+  else {
+    nodeCount = 14
+  }
+  
   const root = createBalancedBST(1, nodeCount);
 
-  // Print the pre-order traversal of the created BST
   const fullBST = new BST();
   fullBST.root = root;
   fullBST.printPreOrder(fullBST.root);
   console.log("Root Node:", fullBST.root);
+
+  return final_template;
 }
 
 export default CreateTree;
