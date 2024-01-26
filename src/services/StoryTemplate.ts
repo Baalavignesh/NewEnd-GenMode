@@ -68,7 +68,7 @@ class BST {
       } else {
         console.log("add branch");
         if(this.my_stack) {
-            let branch = this.my_stack
+            // let branch = this.my_stack
         }
         let new_branch_1 = `branch_${this.branch_number}`
         this.branch_number = this.branch_number + 1
