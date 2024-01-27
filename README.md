@@ -34,7 +34,7 @@ Facilitate community collaboration by allowing multiple twists and community dis
 
 To get started with the NewEnd GenMode React project, follow the steps below:
 
-1. Clone the repository: `git clone https://github.com/your-username/newend-genmode.git`
+1. Clone the repository: `git clone https://github.com/baalavignesh/newend-genmode.git`
 2. Install dependencies: `npm install`
 3. Start the development server: `npm start`
 
